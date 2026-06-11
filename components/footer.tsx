@@ -6,12 +6,26 @@ import { Phone, Mail, Facebook, Linkedin } from "lucide-react"
 
 const footerLinks = {
   Services: [
-    { label: "Personal Care", href: "/services" },
-    { label: "Companion Care", href: "/services" },
-    { label: "Dementia Care", href: "/services" },
+    { label: "Skilled Nursing Care", href: "/services" },
+    { label: "Medication Management", href: "/services" },
+    { label: "Wound Care", href: "/services" },
+    { label: "Chronic Disease Management", href: "/services" },
+    { label: "Post-Surgical Care", href: "/services" },
+    { label: "IV Therapy & Injections", href: "/services" },
+    { label: "Health Assessments & Monitoring", href: "/services" },
+    { label: "Physical Therapy", href: "/services" },
+    { label: "Occupational Therapy", href: "/services" },
+    { label: "Speech Therapy", href: "/services" },
+    { label: "Personal Care Assistance", href: "/services" },
+    { label: "Alzheimer's & Dementia Care", href: "/services" },
     { label: "Respite Care", href: "/services" },
-    { label: "Meal Preparation", href: "/services" },
-    { label: "Light Housekeeping", href: "/services" },
+    { label: "Companion Care", href: "/services" },
+    { label: "Palliative Care Support", href: "/services" },
+    { label: "Fall Prevention", href: "/services" },
+    { label: "Vital Signs Monitoring", href: "/services" },
+    { label: "Nutritional Guidance", href: "/services" },
+    { label: "Care Coordination", href: "/services" },
+    { label: "Homemaker & Housekeeping", href: "/services" },
   ],
   Company: [
     { label: "About Us", href: "/about" },
@@ -36,7 +50,7 @@ export function Footer() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16"
+          className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-16"
         >
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
@@ -66,12 +80,26 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links */}
-          {Object.entries(footerLinks).map(([title, links]) => (
+          {/* Services — spans 2 cols with 2-col internal grid */}
+          <div className="col-span-2">
+            <h4 className="text-xs font-semibold text-[#8FA878] uppercase tracking-wider mb-5">Services</h4>
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+              {footerLinks.Services.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-sm text-[#6A8558] hover:text-[#7AAD46] transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company & Legal */}
+          {(["Company", "Legal"] as const).map((title) => (
             <div key={title}>
               <h4 className="text-xs font-semibold text-[#8FA878] uppercase tracking-wider mb-5">{title}</h4>
               <ul className="space-y-3">
-                {links.map((link) => (
+                {footerLinks[title].map((link) => (
                   <li key={link.label}>
                     <a href={link.href} className="text-sm text-[#6A8558] hover:text-[#7AAD46] transition-colors">
                       {link.label}

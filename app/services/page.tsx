@@ -2,18 +2,34 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Heart, Users, Brain, Coffee, UtensilsCrossed, Home, ArrowRight, Phone, CheckCircle2 } from "lucide-react"
+import { Heart, Users, Brain, Coffee, UtensilsCrossed, Home, Stethoscope, Activity, ArrowRight, Phone, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
 const services = [
   {
+    icon: Stethoscope,
+    title: "Skilled Nursing Care",
+    tagline: "Clinical excellence at home",
+    description:
+      "Professional nursing services provided by licensed clinicians, including medication management, wound care, chronic disease monitoring, post-surgical care, and health assessments to support recovery and independence.",
+    details: [
+      "Medication management and administration",
+      "Wound care and dressing changes",
+      "Chronic disease monitoring (Diabetes, COPD, Heart Disease)",
+      "Post-surgical and post-hospital care",
+      "Health assessments and vital signs monitoring",
+    ],
+    image: "https://res.cloudinary.com/ds5yshxqc/image/upload/v1779877759/4_ahktyo.png",
+    accent: "#5C8A35",
+  },
+  {
     icon: Heart,
-    title: "Personal Care",
+    title: "Home Health Aide Services",
     tagline: "Dignity in every interaction",
     description:
-      "Respectful, hands-on support with daily routines like bathing, dressing, and hygiene—helping maintain dignity and comfort.",
+      "Compassionate assistance with daily living activities such as bathing, dressing, grooming, mobility support, and personal hygiene while preserving dignity and comfort.",
     details: [
       "Bathing and personal hygiene assistance",
       "Dressing and grooming support",
@@ -25,35 +41,35 @@ const services = [
     accent: "#5C8A35",
   },
   {
+    icon: Activity,
+    title: "Therapy Services",
+    tagline: "Restore strength and independence",
+    description:
+      "Physical, Occupational, and Speech Therapy designed to improve strength, mobility, communication, and overall quality of life in the comfort of home.",
+    details: [
+      "Physical therapy for strength and mobility",
+      "Occupational therapy for daily living skills",
+      "Speech therapy for communication and swallowing",
+      "Fall prevention and safety assessments",
+      "Rehabilitation and recovery support",
+    ],
+    image: "https://res.cloudinary.com/ds5yshxqc/image/upload/v1779877800/2_nzvckc.png",
+    accent: "#5C8A35",
+  },
+  {
     icon: Users,
     title: "Companion Care",
     tagline: "Connection that matters",
     description:
-      "Meaningful companionship and everyday support to reduce loneliness and keep your loved one engaged and connected.",
+      "Meaningful companionship and social engagement that helps reduce isolation, promote emotional well-being, and provide support with everyday activities.",
     details: [
       "Friendly conversation and emotional support",
       "Accompaniment to appointments and outings",
       "Hobby and activity engagement",
-      "Reading and games",
+      "Reading, games, and social interaction",
       "Errands and light transportation",
     ],
     image: "https://res.cloudinary.com/ds5yshxqc/image/upload/v1779877847/1_p8ciht.png",
-    accent: "#5C8A35",
-  },
-  {
-    icon: Brain,
-    title: "Dementia Care",
-    tagline: "Safety, routine, and calm",
-    description:
-      "Structured, patient-centered care that promotes safety, routine, and calm for individuals with memory loss.",
-    details: [
-      "Alzheimer's and dementia-specific training",
-      "Structured daily routines",
-      "Wandering prevention and safety monitoring",
-      "Cognitive engagement activities",
-      "Family education and support",
-    ],
-    image: "https://res.cloudinary.com/ds5yshxqc/image/upload/v1779877759/4_ahktyo.png",
     accent: "#5C8A35",
   },
   {
@@ -61,7 +77,7 @@ const services = [
     title: "Respite Care",
     tagline: "Relief for the whole family",
     description:
-      "Reliable relief for family caregivers, giving you time to rest while your loved one is in trusted hands.",
+      "Reliable short-term care that allows family caregivers to rest, recharge, or attend to personal responsibilities while ensuring their loved one receives attentive care.",
     details: [
       "Short-term and long-term coverage",
       "Flexible scheduling to suit your needs",
@@ -69,36 +85,20 @@ const services = [
       "Emergency and planned respite",
       "Peace of mind for the whole family",
     ],
-    image: "https://res.cloudinary.com/ds5yshxqc/image/upload/v1779877800/2_nzvckc.png",
-    accent: "#5C8A35",
-  },
-  {
-    icon: UtensilsCrossed,
-    title: "Meal Preparation",
-    tagline: "Nutrition that nourishes",
-    description:
-      "Fresh, nutritious meals prepared to meet dietary needs and support overall health and well-being.",
-    details: [
-      "Personalized meal planning",
-      "Special dietary accommodations",
-      "Grocery shopping and stocking",
-      "Meal prep and cleanup",
-      "Hydration monitoring",
-    ],
     image: "https://res.cloudinary.com/ds5yshxqc/image/upload/v1779877693/8_gieaft.png",
     accent: "#5C8A35",
   },
   {
     icon: Home,
-    title: "Light Housekeeping",
-    tagline: "A clean, safe home",
+    title: "Homemaker & Light Housekeeping",
+    tagline: "A safe, comfortable home",
     description:
-      "Keeping the home clean, safe, and organized to create a comfortable living environment every day.",
+      "Assistance with meal preparation, laundry, light cleaning, organization, and household tasks to maintain a safe, healthy, and comfortable living environment.",
     details: [
-      "Vacuuming, sweeping, and mopping",
+      "Meal preparation and nutritional support",
       "Laundry and linen changes",
-      "Kitchen and bathroom cleaning",
-      "Trash removal and tidying",
+      "Light cleaning and organization",
+      "Grocery shopping and errands",
       "Home safety checks",
     ],
     image: "https://res.cloudinary.com/ds5yshxqc/image/upload/v1779877336/5_mqhjqe.png",
@@ -196,7 +196,7 @@ export default function ServicesPage() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#122008]/80 border border-[#5C8A35]/40 mb-8">
             <span className="w-2 h-2 rounded-full bg-[#7AAD46] pulse-glow" />
-            <span className="text-sm text-[#7AAD46] font-medium">Serving Greater Houston</span>
+            <span className="text-sm text-[#7AAD46] font-medium">Serving Greater Houston, Missouri City & Richmond</span>
           </div>
           <h1
             className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"

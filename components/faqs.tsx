@@ -13,7 +13,7 @@ export function FAQs() {
     {
       question: "What services does Cent Home Health offer?",
       answer:
-        "We provide personal care, companion care, dementia care, respite care, meal preparation, and light housekeeping. All services are tailored to meet individual needs.",
+        "We provide a wide range of home healthcare services including: Skilled Nursing Care, Medication Management, Wound Care, Chronic Disease Management, Post-Surgical Care, IV Therapy, Health Assessments, Physical Therapy, Occupational Therapy, Speech Therapy, Personal Care Assistance, Alzheimer's & Dementia Care, Respite Care, Companion Care, Palliative Care Support, Fall Prevention, Vital Signs Monitoring, Nutritional Guidance, and Care Coordination with Physicians and Specialists.",
     },
     {
       question: "Are your caregivers trained and certified?",
@@ -33,7 +33,7 @@ export function FAQs() {
     {
       question: "What areas do you serve?",
       answer:
-        "We serve the Greater Houston area including Houston, Sugarland, Katy, Fulshear, Pearland, Humble, and Tomball.",
+        "We serve the Greater Houston area including Houston, Sugarland, Katy, Missouri City, Richmond, Fulshear, Pearland, Humble, and Tomball.",
     },
     {
       question: "How flexible is your scheduling?",

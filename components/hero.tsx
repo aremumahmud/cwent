@@ -54,7 +54,7 @@ export function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#122008]/80 border border-[#5C8A35]/40 mb-8"
             >
               <span className="w-2 h-2 rounded-full bg-[#7AAD46] pulse-glow" />
-              <span className="text-sm text-[#7AAD46] font-medium">Serving Houston & Surrounding Areas</span>
+              <span className="text-sm text-[#7AAD46] font-medium">Serving Houston, Missouri City, Richmond & Surrounding Areas</span>
             </motion.div>
 
             {/* Headline */}
@@ -64,7 +64,7 @@ export function Hero() {
             >
               <span className="block overflow-hidden pb-1">
                 <motion.span className="block" variants={textRevealVariants} initial="hidden" animate="visible" custom={0}>
-                  Compassionate
+                  Compassionate Home Health
                 </motion.span>
               </span>
               <span className="block overflow-hidden pb-1">
@@ -75,7 +75,7 @@ export function Hero() {
                   animate="visible"
                   custom={1}
                 >
-                  Home Health Care
+                  & Skilled Nursing Care
                 </motion.span>
               </span>
             </h1>
@@ -87,8 +87,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-lg text-[#8FA878] max-w-xl mb-10 leading-relaxed"
             >
-              Professional in-home healthcare services with compassion and expertise. Dedicated to helping you or your
-              loved ones maintain independence and dignity.
+              Professional in-home healthcare and skilled nursing services delivered with compassion and expertise — helping you or your loved ones maintain independence, dignity, and quality of life in the comfort of home.
             </motion.p>
 
             {/* CTAs */}

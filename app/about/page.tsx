@@ -38,7 +38,7 @@ const values = [
   { icon: CheckCircle2, title: "Respect", desc: "Dignity is at the center of everything we do." },
 ]
 
-const areas = ["Houston", "Sugarland", "Katy", "Fulshear", "Pearland", "Humble", "Tomball"]
+const areas = ["Houston", "Sugarland", "Katy", "Missouri City", "Richmond", "Fulshear", "Pearland", "Humble", "Tomball"]
 
 function Section({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })

@@ -20,7 +20,7 @@ export function About() {
       title: "Administrator & Co-Founder",
       bio: "Committed to ensuring every client receives personalized, culturally responsive home health care.",
       initials: "LE",
-      photo: null,
+      photo: "/founder2.jpg",
     },
   ]
 
@@ -31,7 +31,7 @@ export function About() {
     { label: "Dignity First", desc: "Respect in every visit" },
   ]
 
-  const areas = ["Houston", "Sugarland", "Katy", "Fulshear", "Pearland", "Humble", "Tomball"]
+  const areas = ["Houston", "Sugarland", "Katy", "Missouri City", "Richmond", "Fulshear", "Pearland", "Humble", "Tomball"]
 
   return (
     <section id="about" className="py-24 px-4 bg-stone-50" ref={ref}>

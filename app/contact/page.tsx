@@ -28,7 +28,7 @@ const contactInfo = [
     icon: MapPin,
     title: "Service Areas",
     value: "Greater Houston Area",
-    sub: "Houston, Katy, Sugarland & more",
+    sub: "Houston, Katy, Sugarland, Missouri City, Richmond & more",
     link: "#",
   },
   {
