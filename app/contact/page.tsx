@@ -64,17 +64,36 @@ export default function ContactPage() {
     message: "",
   })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Contact form submitted:", formData)
-    setSubmitted(true)
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
-    setTimeout(() => setSubmitted(false), 6000)
+    setLoading(true)
+    setError("")
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      if (!res.ok) {
+        const data = await res.json()
+        setError(data.error || "Something went wrong. Please try again.")
+      } else {
+        setSubmitted(true)
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
+        setTimeout(() => setSubmitted(false), 6000)
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -187,7 +206,17 @@ export default function ContactPage() {
                     className="mb-6 p-4 bg-[#EEF6E0] border border-[#5C8A35]/30 rounded-xl flex items-center gap-3"
                   >
                     <CheckCircle2 className="w-5 h-5 text-[#5C8A35] flex-shrink-0" />
-                    <p className="text-[#3A6224] text-sm font-medium">Message sent! We'll be in touch soon.</p>
+                    <p className="text-[#3A6224] text-sm font-medium">Message sent! Check your email for a confirmation.</p>
+                  </motion.div>
+                )}
+
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm"
+                  >
+                    {error}
                   </motion.div>
                 )}
 
@@ -236,9 +265,9 @@ export default function ContactPage() {
                       className="w-full px-4 py-3 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#5C8A35] focus:border-[#5C8A35] resize-none bg-white text-sm"
                     />
                   </div>
-                  <Button type="submit" className="w-full bg-[#5C8A35] text-white hover:bg-[#4A7228] rounded-full py-3 font-semibold shimmer-btn border-0">
-                    Send Message
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                  <Button type="submit" disabled={loading} className="w-full bg-[#5C8A35] text-white hover:bg-[#4A7228] rounded-full py-3 font-semibold shimmer-btn border-0 disabled:opacity-60">
+                    {loading ? "Sending..." : "Send Message"}
+                    {!loading && <ArrowRight className="ml-2 w-4 h-4" />}
                   </Button>
                 </form>
               </div>

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Quote, CheckCircle2, ArrowRight, Phone, Heart, Shield, Star } from "lucide-react"
+import { Quote, CheckCircle2, ArrowRight, Phone, Heart, Shield, Star, Stethoscope, Activity, Users, Coffee, Home, Wind } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
@@ -26,7 +26,7 @@ const team = [
     name: "Dr. Linda Ejem",
     title: "Administrator & Co-Founder",
     bio: "Committed to ensuring every client receives personalized, culturally responsive home health care. Dr. Ejem's expertise in care coordination ensures every family receives seamless, high-quality support.",
-    photo: null,
+    photo: "/founder2.jpg",
     initials: "LE",
   },
 ]
@@ -39,6 +39,16 @@ const values = [
 ]
 
 const areas = ["Houston", "Sugarland", "Katy", "Missouri City", "Richmond", "Fulshear", "Pearland", "Humble", "Tomball"]
+
+const servicesList = [
+  { icon: Stethoscope, title: "Skilled Nursing Care", desc: "Medication management, wound care, chronic disease monitoring, and post-surgical support by licensed clinicians." },
+  { icon: Heart, title: "Home Health Aide Services", desc: "Compassionate assistance with bathing, dressing, grooming, mobility, and personal hygiene." },
+  { icon: Activity, title: "Therapy Services", desc: "Physical, Occupational, and Speech Therapy to restore strength, mobility, and communication at home." },
+  { icon: Users, title: "Companion Care", desc: "Meaningful companionship that reduces isolation, promotes emotional well-being, and supports daily activities." },
+  { icon: Coffee, title: "Respite Care", desc: "Reliable short-term care so family caregivers can rest while their loved one is in attentive hands." },
+  { icon: Home, title: "Homemaker & Housekeeping", desc: "Meal preparation, laundry, light cleaning, and household tasks to maintain a safe, comfortable home." },
+  { icon: Wind, title: "Respiratory Care", desc: "Oxygen therapy, COPD support, breathing treatments, nebulizer administration, and respiratory assessments by trained professionals." },
+]
 
 function Section({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -235,6 +245,44 @@ export default function AboutPage() {
               </Section>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="bg-white py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <Section className="text-center mb-12">
+            <p className="text-[#5C8A35] font-semibold text-sm uppercase tracking-widest mb-3">What We Offer</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4" style={{ fontFamily: "var(--font-cal-sans)" }}>
+              Our Services
+            </h2>
+            <p className="text-slate-500 max-w-xl mx-auto">
+              Comprehensive in-home healthcare tailored to every stage of life and every level of need.
+            </p>
+          </Section>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {servicesList.map((s) => {
+              const Icon = s.icon
+              return (
+                <Section key={s.title}>
+                  <div className="bg-stone-50 border border-stone-200 rounded-3xl p-7 h-full hover:border-[#5C8A35]/30 hover:bg-[#EEF6E0]/30 transition-all duration-300 group">
+                    <div className="inline-flex p-3 rounded-2xl bg-[#EEF6E0] border border-[#5C8A35]/20 mb-5 group-hover:bg-[#5C8A35]/10 transition-colors">
+                      <Icon className="w-5 h-5 text-[#5C8A35]" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">{s.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
+                  </div>
+                </Section>
+              )
+            })}
+          </div>
+          <Section className="text-center mt-10">
+            <a href="/services">
+              <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0B1A07] text-white text-sm font-semibold hover:bg-[#122008] transition-colors">
+                View All Services <ArrowRight className="w-4 h-4" />
+              </button>
+            </a>
+          </Section>
         </div>
       </section>
 

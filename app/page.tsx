@@ -3,6 +3,7 @@ import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
 import { LogoMarquee } from "@/components/logo-marquee"
 import { BentoGrid } from "@/components/bento-grid"
+import { RespiratoryCare } from "@/components/respiratory-care"
 import { About } from "@/components/about"
 import { WhyChooseUs } from "@/components/why-choose-us"
 import { Testimonials } from "@/components/testimonials"
@@ -20,6 +21,7 @@ export default function Home() {
         <Hero />
         <LogoMarquee />
         <BentoGrid />
+        <RespiratoryCare />
         <About />
         <WhyChooseUs />
         <Testimonials />

@@ -50,17 +50,36 @@ export default function ConsultationPage() {
     message: "",
   })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Consultation form submitted:", formData)
-    setSubmitted(true)
-    setFormData({ name: "", email: "", phone: "", relationship: "", careNeeds: "", preferredDate: "", preferredTime: "", message: "" })
-    setTimeout(() => setSubmitted(false), 8000)
+    setLoading(true)
+    setError("")
+    try {
+      const res = await fetch("/api/consultation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      if (!res.ok) {
+        const data = await res.json()
+        setError(data.error || "Something went wrong. Please try again.")
+      } else {
+        setSubmitted(true)
+        setFormData({ name: "", email: "", phone: "", relationship: "", careNeeds: "", preferredDate: "", preferredTime: "", message: "" })
+        setTimeout(() => setSubmitted(false), 8000)
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -191,7 +210,17 @@ export default function ConsultationPage() {
                       className="mb-6 p-4 bg-[#EEF6E0] border border-[#5C8A35]/30 rounded-xl flex items-center gap-3"
                     >
                       <CheckCircle2 className="w-5 h-5 text-[#5C8A35] flex-shrink-0" />
-                      <p className="text-[#3A6224] text-sm font-medium">Request received! We'll confirm your consultation shortly.</p>
+                      <p className="text-[#3A6224] text-sm font-medium">Request received! Check your email — we'll confirm shortly.</p>
+                    </motion.div>
+                  )}
+
+                  {error && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="mb-6 p-4 bg-red-50/10 border border-red-400/30 rounded-xl flex items-center gap-3"
+                    >
+                      <p className="text-red-400 text-sm">{error}</p>
                     </motion.div>
                   )}
 
@@ -261,9 +290,9 @@ export default function ConsultationPage() {
                         className="w-full px-4 py-3 border border-[#1E3310] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#5C8A35] focus:border-[#5C8A35] resize-none bg-[#122008] text-white placeholder:text-[#3A5A22] text-sm"
                       />
                     </div>
-                    <Button type="submit" className="w-full bg-[#5C8A35] text-white hover:bg-[#4A7228] rounded-full py-3 font-semibold shimmer-btn border-0 h-12 text-base">
-                      Request My Free Consultation
-                      <ArrowRight className="ml-2 w-4 h-4" />
+                    <Button type="submit" disabled={loading} className="w-full bg-[#5C8A35] text-white hover:bg-[#4A7228] rounded-full py-3 font-semibold shimmer-btn border-0 h-12 text-base disabled:opacity-60">
+                      {loading ? "Submitting..." : "Request My Free Consultation"}
+                      {!loading && <ArrowRight className="ml-2 w-4 h-4" />}
                     </Button>
                     <p className="text-[#3A5A22] text-xs text-center">
                       By submitting, you agree to be contacted by our team. No spam, ever.

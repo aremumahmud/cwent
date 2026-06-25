@@ -26,6 +26,7 @@ const footerLinks = {
     { label: "Nutritional Guidance", href: "/services" },
     { label: "Care Coordination", href: "/services" },
     { label: "Homemaker & Housekeeping", href: "/services" },
+    { label: "Respiratory Care", href: "/services" },
   ],
   Company: [
     { label: "About Us", href: "/about" },

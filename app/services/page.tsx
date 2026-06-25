@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Heart, Users, Brain, Coffee, UtensilsCrossed, Home, Stethoscope, Activity, ArrowRight, Phone, CheckCircle2 } from "lucide-react"
+import { Heart, Users, Coffee, Home, Stethoscope, Activity, Wind, ArrowRight, Phone, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
@@ -102,6 +102,25 @@ const services = [
       "Home safety checks",
     ],
     image: "https://res.cloudinary.com/ds5yshxqc/image/upload/v1779877336/5_mqhjqe.png",
+    accent: "#5C8A35",
+  },
+  {
+    icon: Wind,
+    title: "Respiratory Care",
+    tagline: "Breathe easier at home",
+    description:
+      "Specialized respiratory support provided by trained healthcare professionals to help patients manage breathing conditions, improve lung function, and maintain comfort and independence at home.",
+    details: [
+      "Oxygen therapy monitoring and management",
+      "COPD and chronic respiratory disease support",
+      "Breathing treatments and nebulizer administration",
+      "Respiratory assessments and oxygen saturation monitoring",
+      "Post-hospital respiratory recovery care",
+      "Airway clearance techniques and pulmonary health support",
+      "Education on inhaler, oxygen, and respiratory equipment use",
+      "Coordination with physicians for ongoing respiratory care plans",
+    ],
+    image: "/1.png",
     accent: "#5C8A35",
   },
 ]

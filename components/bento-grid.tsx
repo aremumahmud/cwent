@@ -2,50 +2,57 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { Heart, Users, Brain, Coffee, UtensilsCrossed, Home } from "lucide-react"
+import { Heart, Users, Coffee, Home, Stethoscope, Activity, Wind } from "lucide-react"
 
 const services = [
   {
-    icon: Heart,
-    title: "Personal Care",
+    icon: Stethoscope,
+    title: "Skilled Nursing Care",
     description:
-      "Respectful, hands-on support with daily routines like bathing, dressing, and hygiene—helping maintain dignity and comfort.",
+      "Licensed clinicians providing medication management, wound care, chronic disease monitoring, and post-surgical support.",
+    check: "Licensed clinicians",
+  },
+  {
+    icon: Heart,
+    title: "Home Health Aide Services",
+    description:
+      "Compassionate assistance with bathing, dressing, grooming, mobility, and personal hygiene while preserving dignity.",
     check: "Dignity-focused care",
+  },
+  {
+    icon: Activity,
+    title: "Therapy Services",
+    description:
+      "Physical, Occupational, and Speech Therapy to improve strength, mobility, and communication at home.",
+    check: "PT, OT & Speech",
   },
   {
     icon: Users,
     title: "Companion Care",
     description:
-      "Meaningful companionship and everyday support to reduce loneliness and keep your loved one engaged and connected.",
+      "Meaningful companionship and social engagement that reduces isolation and promotes emotional well-being.",
     check: "Emotionally supportive",
-  },
-  {
-    icon: Brain,
-    title: "Dementia Care",
-    description:
-      "Structured, patient-centered care that promotes safety, routine, and calm for individuals with memory loss.",
-    check: "Specialized training",
   },
   {
     icon: Coffee,
     title: "Respite Care",
     description:
-      "Reliable relief for family caregivers, giving you time to rest while your loved one is in trusted hands.",
+      "Reliable short-term care so family caregivers can rest while their loved one receives attentive support.",
     check: "Flexible scheduling",
   },
   {
-    icon: UtensilsCrossed,
-    title: "Meal Preparation",
+    icon: Home,
+    title: "Homemaker & Housekeeping",
     description:
-      "Fresh, nutritious meals prepared to meet dietary needs and support overall health and well-being.",
-    check: "Dietary needs met",
+      "Meal prep, laundry, light cleaning, and household tasks to maintain a safe and comfortable home.",
+    check: "Safe environment",
   },
   {
-    icon: Home,
-    title: "Light Housekeeping",
+    icon: Wind,
+    title: "Respiratory Care",
     description:
-      "Keeping the home clean, safe, and organized to create a comfortable living environment every day.",
-    check: "Safe environment",
+      "Specialized respiratory support including oxygen therapy, COPD management, breathing treatments, and nebulizer administration at home.",
+    check: "Trained professionals",
   },
 ]
 
